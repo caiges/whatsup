@@ -42,7 +42,7 @@ func main() {
 			version, err := ParseVersion(resp.Body)
 			checkErr(err)
 
-			fmt.Printf("%s -- %s\n", url["name"], version.Version)
+			fmt.Printf("%s -- %s -- %s\n", url["project"], url["env"], version.Version)
 		}
 	}
 }
