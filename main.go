@@ -9,7 +9,8 @@ import (
 )
 
 type Config struct {
-	Urls []map[string]string
+	Urls  []map[string]string
+	Slack map[string]string
 }
 
 type Version struct {
