@@ -1,0 +1,6 @@
+{
+	"urls": [
+		"http://api.gobold.com/version",
+		"http://api-sandbox.gobold.com/version"
+	]
+}
