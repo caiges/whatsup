@@ -1,6 +1,12 @@
 {
 	"urls": [
-		"http://api.gobold.com/version",
-		"http://api-sandbox.gobold.com/version"
+		{
+      "name": "live",
+      "url": "https://api.gobold.com/version"
+    },
+    {
+      "name": "sandbox",
+      "url": "https://api-sandbox.gobold.com/version"
+    }
 	]
 }
