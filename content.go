@@ -3,6 +3,7 @@ package whatsup
 import (
 	"net/http"
 	"strconv"
+	"time"
 )
 
 var timeout = time.Duration(5 * time.Second)
