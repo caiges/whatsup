@@ -23,7 +23,7 @@ func main() {
 	}
 
 	decoder := json.NewDecoder(configFile)
-	config := whatsup.Config{}
+	config := Config{}
 	err = decoder.Decode(&config)
 
 	if err != nil {
@@ -33,10 +33,4 @@ func main() {
 	contents := whatsup.GetContents(config.Urls)
 
 	fmt.Printf("%s", contents)
-}
-
-func checkErr(err error) {
-	if err != nil {
-		fmt.Println(err)
-	}
 }
