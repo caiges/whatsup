@@ -5,6 +5,8 @@ import (
 	"strconv"
 )
 
+var timeout = time.Duration(5 * time.Second)
+
 type Content struct {
 	Project string
 	Env string
@@ -26,7 +28,15 @@ func GetContents(urls []map[string]string) []Content {
 }
 
 func GetVersion(url string) string {
-	resp, err := http.Get(url)
+	transport := http.Transport{
+        Dial: dialTimeout,
+    }
+
+    client := http.Client{
+        Transport: &transport,
+    }
+
+	resp, err := client.Get(url)
 
 	if err != nil {
 		return "Unavailable"
@@ -43,4 +53,8 @@ func GetVersion(url string) string {
 	} else {
 		return strconv.Itoa(resp.StatusCode)
 	}
+}
+
+func dialTimeout(network, addr string) (net.Conn, error) {
+    return net.DialTimeout(network, addr, timeout)
 }
