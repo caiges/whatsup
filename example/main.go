@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 	"os"
+
+	"github.com/caiges/whatsup"
 )
 
 // Config is an internal representation of the config file
@@ -21,14 +23,14 @@ func main() {
 	}
 
 	decoder := json.NewDecoder(configFile)
-	config := Config{}
+	config := whatsup.Config{}
 	err = decoder.Decode(&config)
 
 	if err != nil {
 		log.Fatal("Could not parse config")
 	}
 
-	contents := GetContents(config.Urls)
+	contents := whatsup.GetContents(config.Urls)
 
 	fmt.Printf("%s", contents)
 }
