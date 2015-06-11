@@ -1,6 +1,7 @@
 package whatsup
 
 import (
+	"net"
 	"net/http"
 	"strconv"
 	"time"
