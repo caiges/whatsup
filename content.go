@@ -7,6 +7,7 @@ import (
 
 type Content struct {
 	Project string
+	Env string
 	Version string
 }
 
@@ -16,6 +17,7 @@ func GetContents(urls []map[string]string) []Content {
 	for _, url := range urls {
 		content := Content{}
 		content.Project = url["project"]
+		content.Env = url["env"]
 		content.Version = GetVersion(url["url"])
 		contents = append(contents, content)
 	}
