@@ -11,7 +11,8 @@ var timeout = time.Duration(5 * time.Second)
 
 type Content struct {
 	Project string
-	Env string
+	Env     string
+	Mode    string
 	Version string
 }
 
@@ -22,6 +23,7 @@ func GetContents(urls []map[string]string) []Content {
 		content := Content{}
 		content.Project = url["project"]
 		content.Env = url["env"]
+		content.Mode = url["mode"]
 		content.Version = GetVersion(url["url"])
 		contents = append(contents, content)
 	}
@@ -31,12 +33,12 @@ func GetContents(urls []map[string]string) []Content {
 
 func GetVersion(url string) string {
 	transport := http.Transport{
-        Dial: dialTimeout,
-    }
+		Dial: dialTimeout,
+	}
 
-    client := http.Client{
-        Transport: &transport,
-    }
+	client := http.Client{
+		Transport: &transport,
+	}
 
 	resp, err := client.Get(url)
 
@@ -58,5 +60,5 @@ func GetVersion(url string) string {
 }
 
 func dialTimeout(network, addr string) (net.Conn, error) {
-    return net.DialTimeout(network, addr, timeout)
+	return net.DialTimeout(network, addr, timeout)
 }

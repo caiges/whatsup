@@ -11,8 +11,8 @@ import (
 
 // Config is an internal representation of the config file
 type Config struct {
-	Urls  []map[string]string
-	Slack map[string]string
+	Projects []map[string]string
+	Slack    map[string]string
 }
 
 func main() {
@@ -30,7 +30,7 @@ func main() {
 		log.Fatal("Could not parse config")
 	}
 
-	contents := whatsup.GetContents(config.Urls)
+	contents := whatsup.GetContents(config.Projects)
 
 	fmt.Printf("%s", contents)
 }
